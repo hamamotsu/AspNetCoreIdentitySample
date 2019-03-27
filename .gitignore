@@ -261,3 +261,6 @@ pub/
 .eshopdocker_*
 \.vscode/
 /src/ToolBox.BatchSyncOrderHdb/Activity/SyncSlackTestActivity.cs
+
+# EntityFramework Data Migration
+**/Data/Migrations
