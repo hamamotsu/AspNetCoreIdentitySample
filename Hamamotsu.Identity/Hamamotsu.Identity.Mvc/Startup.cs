@@ -14,6 +14,7 @@ using Hamamotsu.Identity.Mvc.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Hamamotsu.Identity.Mvc.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 namespace Hamamotsu.Identity.Mvc
 {
@@ -54,6 +55,9 @@ namespace Hamamotsu.Identity.Mvc
 
             services.Configure<IdentityOptions>(options =>
             {
+                // SiginIn settngs.
+                options.SignIn.RequireConfirmedEmail = true;
+
                 // Password settings.
                 options.Password.RequireDigit = true;
                 options.Password.RequireLowercase = true;
@@ -84,6 +88,8 @@ namespace Hamamotsu.Identity.Mvc
                 options.SlidingExpiration = true;
             });
 
+            services.AddTransient<IEmailSender, EmailSender>();
+            services.Configure<AuthMessageSenderOptions>(Configuration.GetSection("SendGrid"));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
