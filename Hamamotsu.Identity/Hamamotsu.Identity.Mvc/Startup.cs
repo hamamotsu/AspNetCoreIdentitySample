@@ -46,8 +46,6 @@ namespace Hamamotsu.Identity.Mvc
 
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddUserStore<SqlServerUserStore<IdentityUser, IdentityRole, ApplicationDbContext>>()
-                //.AddUserManager<ToolBoxUserManager>()
-                //.AddRoleManager<ToolBoxRoleManager>()
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddRoleStore<SqlServerRoleStore<IdentityRole, ApplicationDbContext>>()
                 .AddDefaultTokenProviders();
